@@ -1,9 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './app/layout/styles.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
 
+const render = () => {
+	ReactDOM.render(<App />, rootElement);
+};
+
+if (module.hot) {
+	module.hot.accept('./app/layout/App.js', () => {
+		setTimeout(render);
+	});
+}
+
+render();
 reportWebVitals();

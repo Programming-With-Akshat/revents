@@ -1,9 +1,9 @@
-import './App.css';
+import './styles.css';
 
 const App = () => {
 	return (
 		<div className='app'>
-			<h1>Revents</h1>
+			<h1>Re-vents</h1>
 		</div>
 	);
 };
