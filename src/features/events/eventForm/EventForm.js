@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button, Form, Header, Segment } from 'semantic-ui-react';
 import cuid from 'cuid';
+import { Link } from 'react-router-dom';
 
 const EventForm = ({
 	setFormOpen,
@@ -9,8 +10,6 @@ const EventForm = ({
 	selectedEvent,
 	updateEvent
 }) => {
-	const [loading, setLoading] = useState(false);
-
 	const initialValues = selectedEvent ?? {
 		title: '',
 		category: '',
@@ -23,8 +22,6 @@ const EventForm = ({
 	const [values, setValues] = useState(initialValues);
 
 	const handleFormSubmit = () => {
-		setLoading(true);
-
 		setTimeout(() => {
 			selectedEvent
 				? updateEvent({ ...selectedEvent, ...values })
@@ -36,7 +33,6 @@ const EventForm = ({
 						hostPhotoURL: 'assets/user.png'
 				  });
 			setFormOpen(false);
-			setLoading(false);
 		}, 1000);
 	};
 
@@ -112,19 +108,14 @@ const EventForm = ({
 						/>
 					</Form.Field>
 
-					<Button
-						type='submit'
-						floated='right'
-						positive
-						content='Submit'
-						loading={loading}
-					/>
+					<Button type='submit' floated='right' positive content='Submit' />
 					<Button
 						type='submit'
 						floated='right'
 						color='red'
 						content='Cancel'
-						onClick={() => setFormOpen(false)}
+						as={Link}
+						to='/events'
 					/>
 				</Form>
 			</Segment>

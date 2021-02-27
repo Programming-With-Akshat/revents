@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './app/layout/styles.css';
 
 const rootElement = document.getElementById('root');
 
 const render = () => {
-	ReactDOM.render(<App />, rootElement);
+	ReactDOM.render(
+		<Router>
+			<App />
+		</Router>,
+		rootElement
+	);
 };
 
 if (module.hot) {
