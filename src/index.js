@@ -4,16 +4,23 @@ import 'semantic-ui-css/semantic.min.css';
 import App from './app/layout/App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
 import './app/layout/styles.css';
+import { configureStore } from './app/store/configureStore';
+import ScrollToTop from './app/layout/ScrollToTop';
+
+const store = configureStore();
 
 const rootElement = document.getElementById('root');
 
 const render = () => {
 	ReactDOM.render(
-		<Router>
-			<App />
-		</Router>,
+		<Provider store={store}>
+			<Router>
+				<ScrollToTop />
+				<App />
+			</Router>
+		</Provider>,
 		rootElement
 	);
 };
